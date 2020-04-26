@@ -34,14 +34,15 @@ ActiveRecord::Schema.define(version: 2020_04_25_214513) do
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.decimal "price"
-    t.string "currency"
+    t.integer "currency"
     t.string "course_type"
-    t.boolean "on_sell"
-    t.text "course_url"
+    t.boolean "on_sell", default: true
+    t.string "course_url"
     t.text "description"
     t.integer "valid_period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_url"], name: "index_courses_on_course_url", unique: true
   end
 
 end

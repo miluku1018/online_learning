@@ -2,13 +2,20 @@
   <div class="col-sm-12 pt-3 pb-3">
     <div class="float-right">
       <% if account_signed_in? %>
-        <%= link_to "設定", edit_account_registration_path, class: "btn btn-outline-primary" %>  
-        <%= link_to "登出", destroy_account_session_path,method: :delete, class: "btn btn-primary" %>  
+        <div class="dropdown">
+          <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_account.email %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to "設定", edit_account_registration_path, class: "dropdown-item" %>  
+            <%= link_to "登出", destroy_account_session_path,method: :delete, class: "dropdown-item" %> 
+          </div>
+        </div>  
       <% else %>
         <%= link_to "登入", new_account_session_path, class: "btn btn-outline-primary" %>
         <%= link_to "登出", new_account_registration_path, class: "btn btn-primary" %>
       <% end %>
     </div>
-    <p class="h3"><%= link_to "線上課程", root_path %></p>
+    <p class="h3"><%= link_to "線上課程後台", admin_root_path %></p>
   </div>
 </div>

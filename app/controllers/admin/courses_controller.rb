@@ -17,7 +17,7 @@ class Admin::CoursesController < Admin::BaseController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to root_path, notice: '課程已新增'
+      redirect_to admin_root_path, notice: '課程已新增'
     else
       render :new
     end
@@ -36,7 +36,7 @@ class Admin::CoursesController < Admin::BaseController
 
   def destroy
     @course.destroy
-    redirect_to root_path, notice: '課程已刪除'
+    redirect_to admin_root_path, notice: '課程已刪除'
   end
 
   private

@@ -5,28 +5,26 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">課程主題</th>
-      <th scope="col">課程價格</th>
-      <th scope="col">幣別</th>
-      <th scope="col">課程類型</th>
-      <th scope="col">課程連結</th>
-      <th scope="col">課程描述</th>
-      <th scope="col">課程有效期</th>
-      <th></th>
+      <th scope="col" class="text-nowrap">課程主題</th>
+      <th scope="col" class="text-nowrap">課程價格</th>
+      <th scope="col" class="text-nowrap">幣別</th>
+      <th scope="col" class="text-nowrap">課程類型</th>
+      <th scope="col" class="text-nowrap">課程連結網址</th>
+      <th scope="col" class="text-nowrap">課程描述</th>
+      <th scope="col" class="text-nowrap">課程效期</th>
     </tr>
   </thead>
 
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.title %></td>
+        <td><%= link_to course.title, course %></td>
         <td><%= course.price %></td>
         <td><%= course.currency %></td>
         <td><%= course.course_type %></td>
         <td><%= course.course_url %></td>
-        <td><%= course.description %></td>
-        <td><%= course.valid_period %></td>
-        <td><%= link_to '課程細節', course %></td>
+        <td><%= truncate course.description, length: 20 %></td>
+        <td><%= course.valid_period %> 天 </td>
       </tr>
     <% end %>
   </tbody>

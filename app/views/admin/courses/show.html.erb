@@ -1,0 +1,32 @@
+<h1>完整課程資訊</h1>
+
+<table class="table table-striped ">
+  <thead>
+    <tr>
+      <th scope="col" class="text-nowrap">課程主題</th>
+      <th scope="col" class="text-nowrap">課程價格</th>
+      <th scope="col" class="text-nowrap">幣別</th>
+      <th scope="col" class="text-nowrap">課程類型</th>
+      <th scope="col" class="text-nowrap">是否上架</th>
+      <th scope="col" class="text-nowrap">課程連結</th>
+      <th scope="col" class="text-nowrap">課程描述</th>
+      <th scope="col" class="text-nowrap">課程效期</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @course.title %></td>
+      <td><%= @course.price %></td>
+      <td><%= @course.currency %></td>
+      <td><%= @course.course_type %></td>
+      <td><%= @course.on_sell %></td>
+      <td><%= @course.course_url %></td>
+      <td><%= @course.description %></td>
+      <td><%= @course.valid_period %> 天</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<%= link_to '回到課程列表', admin_root_path, class: "btn btn-outline-info" %>
