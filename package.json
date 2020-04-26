@@ -1,5 +1,8 @@
 {
   "name": "online_learning",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1"
+  }
 }
