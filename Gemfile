@@ -50,6 +50,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'grape_on_rails_routes', '~> 0.3.2'
   gem 'faker', '~> 2.11'
+  gem 'grape-swagger'
+  gem 'grape-swagger-rails'
 
 end
 

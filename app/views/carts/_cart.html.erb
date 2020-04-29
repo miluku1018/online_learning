@@ -1,0 +1,20 @@
+<% if cart.empty? %>
+
+  <article class="message">
+    <div class="message-body">
+      目前購物車是空的
+    </div>
+  </article>
+
+<% else %>
+  
+  <%= form_tag 'http://localhost:3000/api/v0/orders',method: "post", authenticity_token: false do %>
+    <% cart.items.each do |item| %>
+      <%= hidden_field_tag :product_id, item.product_id %>
+      <%= hidden_field_tag :quantity,  item.quantity %>
+      <%= hidden_field_tag :total_price, item.total_price %>
+    <% end %>
+    <%= submit_tag %>
+  <% end %>
+   <%= cart.items %>
+<% end %>
