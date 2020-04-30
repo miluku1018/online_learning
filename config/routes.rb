@@ -5,6 +5,15 @@ Rails.application.routes.draw do
 
   root 'courses#index'
 
+  mount ApiRoot => ApiRoot::PREFIX
+  mount GrapeSwaggerRails::Engine => '/apidoc'
+
+  resource :cart, only: [:destroy, :show] do
+    collection do
+      post :add, path: ':id/add'
+    end
+  end
+
   namespace :admin do
     root 'courses#index'
     resources :courses

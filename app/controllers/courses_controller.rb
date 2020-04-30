@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
   before_action :authenticate_account!
   before_action :find_course, only:[:show, :edit, :update,:destroy]
-
+  layout 'course'
+  
   def index
     @courses = Course.all
   end
