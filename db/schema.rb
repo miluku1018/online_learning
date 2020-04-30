@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_093104) do
+ActiveRecord::Schema.define(version: 2020_04_30_121846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,15 +52,4 @@ ActiveRecord::Schema.define(version: 2020_04_29_093104) do
     t.index ["course_url"], name: "index_courses_on_course_url", unique: true
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.integer "quantity"
-    t.integer "total_price"
-    t.string "num"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_orders_on_account_id"
-  end
-
-  add_foreign_key "orders", "accounts"
 end

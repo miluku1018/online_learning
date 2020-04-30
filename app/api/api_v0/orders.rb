@@ -1,6 +1,6 @@
 module ApiV0
   class Orders < Grape::API
-    
+    before { authenticate! }
     resource :orders do
       get do
         api_response(::Orders.all.to_json)
@@ -23,17 +23,25 @@ module ApiV0
       end
 
       desc 'Return all orders.'
-      get do
-       
-      end
+        get "/orders" do
+          orders = current_account.orders
+
+          present orders, with: ApiV0::Entities::Order
+        end
 
       desc 'Create an order.'
       params do
-        requires :quantity, type: Integer, desc: '數量'
-        requires :total_price, type: Integer, desc: '總計'
+        requires :quantity, type: Integer
+        requires :total_price, type: Integer
       end
-      post do
-        { 'declared_params' => declared(params, include_missing: false) }
+      post "/orders" do
+        order = current_account.orders.new(declared(params, include_missing: false))
+
+        if order.save
+          present order, with: ApiV0::Entities::Order
+        else
+          raise StandardError, $!
+        end
       end
 
       desc 'Delete an order.'
